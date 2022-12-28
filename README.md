@@ -10,7 +10,7 @@ Many have already presented Zettelkasten workflows similar to what you will find
 
 What the workflow looks like in 60 sec.
 
-![](misc/zoz1.mp4)
+https://user-images.githubusercontent.com/27356351/209876530-c14154fa-feaa-4894-9e29-abaa3e68110c.mp4
 
 ## Installation and Set-up
 
