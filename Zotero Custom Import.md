@@ -1,11 +1,16 @@
 ---
-title: "{{title}}"
+date_created: {{date}} {{time}}
+date_updated: {{date}} {{time}}
+aliases:
+  - "{{title}}"
 authors: [{{authors}}]
-tags: [{{allTags}}]
-year: {{date | format("YYYY")}}
-url: {{url}}
 DOI: {{DOI}}
 Journal: {{publicationTitle}}
+tags:
+  - {{allTags}}
+title: "{{citekey}}"
+url: {{url}}
+year: {{date | format("YYYY")}}
 ---
 
 - Zotero Link : {{pdfZoteroLink}}
@@ -19,33 +24,32 @@ Journal: {{publicationTitle}}
 {% for annotation in annotations %}
 {%- if annotation.annotatedText %}
 {%- if annotation.comment %}
-````ad-cite
-title:{{citekey}} [(go to citation)](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
-{{annotation.annotatedText}}
-```ad-info
-title: Comment
-{{annotation.comment}}
-```
-````
+
+> [!cite] {{citekey}} [(go to citation)](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
+> {{annotation.annotatedText}}
+>
+> > [!info] Comment
+> > {{annotation.comment}}
+
 {%- else %}
-```ad-cite
-title:{{citekey}} [(go to citation)](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
-{{annotation.annotatedText}}
-```
+
+> [!cite] {{citekey}} [(go to citation)](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
+> {{annotation.annotatedText}}
+
 {%- endif %}
 {%- elif annotation.imageRelativePath %}
 ![[{{annotation.imageRelativePath}}]]
 [Go to annotation](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
 {%- if annotation.comment  %}
-```ad-info
-title: Comment
-{{annotation.comment}}
-```
+
+> [!info] Comment
+> {{annotation.comment}}
+
 {%- endif %}
 {%- else %}
-```ad-info
-title: Comment [(Go to Comment)](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
-{{annotation.comment}}
-```
+
+> > [!info] Comment [(Go to Comment)](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.page}}&annotation={{annotation.id}})
+> > {{annotation.comment}}
+
 {%- endif %}
 {% endfor -%}
