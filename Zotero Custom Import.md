@@ -1,6 +1,4 @@
 ---
-date_created: {{date}} {{time}}
-date_updated: {{date}} {{time}}
 aliases:
   - "{{title}}"
 authors: [{{authors}}]
